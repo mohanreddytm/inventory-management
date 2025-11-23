@@ -12,13 +12,19 @@ npm install
 
 ### 2. Environment Configuration
 
-Create a `.env` file in the `frontend` directory (optional for local development):
+Create a `.env` file in the `frontend` directory:
 
 ```bash
-REACT_APP_API_BASE_URL=http://localhost:4000/api
+cp .env.example .env
 ```
 
-If not set, it defaults to `http://localhost:4000/api`.
+Or manually create `.env` with:
+
+```bash
+REACT_APP_API_BASE_URL="https://inventory-management-py4o.onrender.com/api"
+```
+
+If not set, it defaults to `https://inventory-management-py4o.onrender.com/api` (deployed backend).
 
 ### 3. Run the Application
 
@@ -60,23 +66,43 @@ Product B,pieces,Clothing,Brand Y,50,Active,
 
 When deploying to Vercel, Netlify, or similar platforms:
 
-1. Set the `REACT_APP_API_BASE_URL` environment variable to your deployed backend URL
-   - Example: `https://your-backend.railway.app/api`
-2. Build the app: `npm run build`
-3. Deploy the `build` folder
+**Important:** Set the `REACT_APP_API_BASE_URL` environment variable to the deployed backend URL in your hosting provider.
+
+### Set Environment Variable
+
+Set `REACT_APP_API_BASE_URL` to `https://inventory-management-py4o.onrender.com/api` in your hosting provider (Vercel/Netlify).
 
 ### Vercel
 
 1. Connect your repository
-2. Set environment variable: `REACT_APP_API_BASE_URL`
-3. Deploy
+2. Go to Settings → Environment Variables
+3. Add environment variable: 
+   - Name: `REACT_APP_API_BASE_URL`
+   - Value: `https://inventory-management-py4o.onrender.com/api`
+4. Deploy
 
 ### Netlify
 
 1. Connect your repository
-2. Build command: `npm run build`
-3. Publish directory: `build`
-4. Add environment variable: `REACT_APP_API_BASE_URL`
+2. Go to Site settings → Environment variables
+3. Add environment variable:
+   - Key: `REACT_APP_API_BASE_URL`
+   - Value: `https://inventory-management-py4o.onrender.com/api`
+4. Build command: `npm run build`
+5. Publish directory: `build`
+6. Deploy
+
+### Local Testing Before Deploy
+
+```bash
+cp .env.example .env
+npm install
+npm start
+```
+
+### Production Build
+
+For production deploy: set env var `REACT_APP_API_BASE_URL=https://inventory-management-py4o.onrender.com/api` and trigger a build.
 
 ## Development Notes
 

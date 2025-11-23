@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:4000/api"
-});
+const baseURL = process.env.REACT_APP_API_BASE_URL || 'https://inventory-management-py4o.onrender.com/api';
+
+const api = axios.create({ baseURL, withCredentials: false });
 
 export default api;
 
